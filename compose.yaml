@@ -1,3 +1,6 @@
+include:
+  - path: ./infra.yaml
+
 services:
   web:
     build: .
@@ -16,12 +19,3 @@ services:
           target: /code
         - action: rebuild
           path: requirements.txt
-
-  redis:
-    image: redis:alpine
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
-      start_period: 10s
